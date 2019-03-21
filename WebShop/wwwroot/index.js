@@ -11,8 +11,17 @@ const productsList = document.getElementById('products');
           <h3>${item.content}</h3>
           <p>${item.price}</p>
           <p>${item.quantity}</p>
+          <button onClick="addToCart(${item.id})" id="buyButton">Buy</button>
           `
           productsList.innerHTML += output;
       });
   })
-  .catch(error => console.error(error))
+    .catch(error => console.error(error))
+
+
+const addToCart = (id) => {
+    fetch(`https://localhost:44386/api/cart?id=${id}`, {
+        method: "POST"
+    });
+
+};

@@ -24,7 +24,7 @@ namespace WebShop.Controllers
 
         {
             var connectionString = configuration.GetConnectionString("ConnectionString");
-            this.PlaceOrderService = new PlaceOrderService(new PlaceOrderRepository(connectionString));
+            //this.PlaceOrderService = new PlaceOrderService(new PlaceOrderRepository(connectionString));
         }
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]

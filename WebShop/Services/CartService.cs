@@ -30,12 +30,12 @@ namespace WebShop.Services
             return this.cartRepository.Get(id);
         }
 
-        public bool Add(Cart cart)
+        public bool Add(int id)
         {
 
-            if (cart != null)
+            if (id > 0)
             {
-                cartRepository.Add(cart);
+                cartRepository.Add(id);
                 return true;
             }
             return false;

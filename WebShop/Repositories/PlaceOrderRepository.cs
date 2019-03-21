@@ -47,13 +47,13 @@ namespace WebShop.Repositories
             throw new NotImplementedException();
         }
 
-        public void Add(PlaceOrder order)
-        {
-            using (var connection = new SqlConnection(this.connectionString))
-            {
-                var orderItem = connection.Execute("INSERT INTO PlaceOrder (CostumerName, CostumerLastName, CostumerAddress, CostumerZipcode, CostumerCity) VALUES(@title, @content, @quantity, @price)", order);
+        //public void Add(PlaceOrder order)
+        //{
+        //    using (var connection = new SqlConnection(this.connectionString))
+        //    {
+        //        var orderItem = connection.Execute("INSERT INTO PlaceOrder (CostumerName, CostumerLastName, CostumerAddress, CostumerZipcode, CostumerCity) VALUES(@title, @content, @quantity, @price)", order);
 
-            }
-        }
+        //    }
+        //}
     }
 }

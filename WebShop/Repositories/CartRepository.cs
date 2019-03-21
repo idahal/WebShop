@@ -35,16 +35,11 @@ namespace WebShop.Repositories
             }
         }
 
-        internal void Add(Cart cart)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Add(Items cart)
+           public void Add(int id)
         {
             using (var connection = new SqlConnection(this.connectionString))
             {
-                var shopItem = connection.Execute("INSERT INTO Cart (Title, Quantity, Price) VALUES(@title, @quantity, @price)", cart);
+                var shopItem = connection.Execute($"INSERT INTO Cart (CartId,ItemId) VALUES(0,{id})");
 
             }
         }

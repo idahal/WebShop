@@ -62,9 +62,9 @@ namespace WebShop.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
-        public IActionResult Post([FromBody]Cart cart)
+        public IActionResult Post([FromQuery]int id)
         {
-            var result = this.cartService.Add(cart);
+            var result = this.cartService.Add(id);
 
             if (!result)
             {
