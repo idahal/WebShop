@@ -39,7 +39,8 @@ namespace WebShop.Repositories
         {
             using (var connection = new SqlConnection(this.connectionString))
             {
-                var shopItem = connection.Execute($"INSERT INTO Cart (CartId,ItemId) VALUES(0,{id})");
+
+                var shopItem = connection.Execute($"INSERT INTO Cart (ItemId) VALUES({id})");
 
             }
         }

@@ -64,7 +64,7 @@ namespace WebShop.Controllers
 
         public IActionResult Post([FromQuery]int id)
         {
-            var result = this.cartService.Add(id);
+            var result = cartService.Add(id);
 
             if (!result)
             {
