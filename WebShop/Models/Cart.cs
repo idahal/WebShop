@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebShop.Models
 {
@@ -8,5 +9,6 @@ namespace WebShop.Models
 
         public int ItemId { get; set; }
 
+        public Guid CartGuid { get; set; }
      }
 }

@@ -11,6 +11,7 @@ using Dapper;
 using System.Data.SqlClient;
 using WebShop.Repositories;
 
+
 namespace WebShop.Controllers
 {
     [Route("api/[controller]")]
@@ -40,38 +41,24 @@ namespace WebShop.Controllers
             }
         }
 
-
-        //[HttpGet("{id}")]
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
-        //public IActionResult Get(int id)
-        //{
-        //    var items = cartService.Get(id);
-        //    if (items != null)
-        //    {
-
-        //        return Ok(items);
-        //    }
-        //    else
-        //    {
-        //        return NotFound();
-        //    }
-
-        //}
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
-        public IActionResult Post([FromQuery]int id)
+        public IActionResult Post([FromQuery]int id, string guid = null)
         {
-            var result = cartService.Add(id);
+            var cartGuid = Guid.TryParse(guid, out Guid guidresult) ? guidresult : Guid.NewGuid();
+
+            var result = cartService.Add(id, cartGuid);
 
             if (!result)
             {
                 return BadRequest();
             }
-            return Ok();
+            return Ok(cartGuid);
         }
+
+      
     }
 }
 

@@ -20,8 +20,15 @@ const productsList = document.getElementById('products');
 
 
 const addToCart = (id) => {
-    fetch(`https://localhost:44386/api/cart?id=${id}`, {
+    let guid = localStorage.getItem("guid");
+    fetch(`https://localhost:44386/api/cart?id=${id}&guid=${guid}`, {
         method: "POST"
-    });
-
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data) {
+                localStorage.guid = data;
+            }
+        });
 };
+

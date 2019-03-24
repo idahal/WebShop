@@ -35,12 +35,12 @@ namespace WebShop.Repositories
             }
         }
 
-           public void Add(int id)
+           public void Add(int id, Guid guid)
         {
             using (var connection = new SqlConnection(this.connectionString))
             {
 
-                var shopItem = connection.Execute($"INSERT INTO Cart (ItemId) VALUES({id})");
+                var shopItem = connection.Execute($"INSERT INTO Cart (ItemId, CartGuid) VALUES({id}, '{guid}')");
 
             }
         }
