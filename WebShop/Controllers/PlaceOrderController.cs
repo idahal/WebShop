@@ -18,20 +18,20 @@ namespace WebShop.Controllers
 
     public class PlaceOrderController : Controller
     {
-        private readonly ItemsService itemsService;
+        private readonly PlaceOrderService placeorderService;
 
         public PlaceOrderController(IConfiguration configuration)
 
         {
             var connectionString = configuration.GetConnectionString("ConnectionString");
-            //this.PlaceOrderService = new PlaceOrderService(new PlaceOrderRepository(connectionString));
+            this.placeorderService = new PlaceOrderService(new PlaceOrderRepository(connectionString));
         }
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Get()
         {
-            var items = itemsService.Get();
+            var items = placeorderService.Get();
             if (items != null)
             {
                 return Ok(items);
@@ -48,17 +48,32 @@ namespace WebShop.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Get(int id)
         {
-            var items = itemsService.Get(id);
-            if (items != null)
+            var placeorder = placeorderService.Get(id);
+            if (placeorder != null)
             {
 
-                return Ok(items);
+                return Ok(placeorder);
             }
             else
             {
                 return NotFound();
             }
 
+    }
+
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult Post([FromBody]PlaceOrder placeorder)
+        {
+            var result = this.placeorderService.Add(placeorder);
+
+            if (!result)
+            {
+                return BadRequest();
+            }
+
+            return Ok();
         }
 
     }

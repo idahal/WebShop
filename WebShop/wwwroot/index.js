@@ -6,11 +6,11 @@ const productsList = document.getElementById('products');
       // console.log(data) // Prints result from `response.json()` in getRequest
       data.forEach(item => {
         let output = `
-        <strong><h2>${item.title}</h2></strong>
-          <img src="./Image/${item.image}" alt="${item.title}">
+        <strong><h1>${item.title}</h1></strong>
+          <img src="./Image/${item.image}" alt="${item.title}" >
           <h3>${item.content}</h3>
-          <p>${item.price}</p>
-          <p>${item.quantity}</p>
+          <p>${item.price} : -</p>
+          <p>Left: ${item.quantity}</p>
           <button onClick="addToCart(${item.id})" id="buyButton">Buy</button>
           `
           productsList.innerHTML += output;

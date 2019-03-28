@@ -16,24 +16,29 @@ namespace WebShop.Repositories
             this.connectionString = connectionString;
         }
 
-        public List<Cart> Get()
+        public List<Cart> Get(Guid guid)
         {
             using (var connection = new SqlConnection(this.connectionString))
             {
-                var cartItems = connection.Query<Cart>("SELECT * FROM Cart").ToList();
+                var cartItems = connection.Query<Cart>(
+                    @"SELECT title, image, price FROM Cart 
+                        LEFT JOIN Items ON cart.itemid = Items.Id 
+                        WHERE CartGuid = @guid", new { guid }).ToList();
+
                 return cartItems;
             }
 
         }
 
-        public Cart Get(int id)
-        {
-            using (var connection = new SqlConnection(this.connectionString))
-            {
-                var cartItems = connection.QuerySingleOrDefault<Cart>("SELECT * FROM Cart WHERE Id = @id", new { id });
-                return cartItems;
-            }
-        }
+
+        //public Cart Get(Guid guid)
+        //{
+        //    using (var connection = new SqlConnection(this.connectionString))
+        //    {
+        //        var cartItems = connection.QuerySingleOrDefault<Cart>("SELECT * FROM Cart WHERE Guid = @guid", new { guid });
+        //        return cartItems;
+        //    }
+        //}
 
            public void Add(int id, Guid guid)
         {

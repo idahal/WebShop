@@ -1,0 +1,43 @@
+﻿body {
+    background-color: antiquewhite;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    font-size: 1.5em;
+    color: slateblue;
+}
+
+#products {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+img {
+    height: 250px;
+    width: 200px;
+}
+
+.cart_link {
+    float: right;
+    margin-right: 5%;
+    font-size: 1.5em;
+}
+
+.back_link {
+    float: left;
+    margin-left: 5%;
+    font-size: 1.5em;
+}
+
+button {
+    background-color: slateblue;
+    width: 144px;
+    height: 50px;
+    border-radius: 30px;
+    border: 1px solid purple;
+}

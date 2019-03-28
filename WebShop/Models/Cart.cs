@@ -5,10 +5,11 @@ namespace WebShop.Models
 {
     public class Cart
     {
-        public int CartId { get; set; }
+        public string Title { get; set; }
 
-        public int ItemId { get; set; }
+        public int Price { get; set; }
 
-        public Guid CartGuid { get; set; }
-     }
+        public string Image { get; set; }
+
+    }
 }

@@ -17,18 +17,19 @@ namespace WebShop.Services
         }
 
 
-        public List<Cart> Get()
+        public List<Cart> Get(Guid guid)
         {
             {
-                return this.cartRepository.Get();
+                return this.cartRepository.Get(guid);
             }
         }
 
 
-        public Cart Get(int id)
-        {
-            return this.cartRepository.Get(id);
-        }
+
+        //public Cart Get(Guid guid)
+        //{
+        //    return this.cartRepository.Get(guid);
+        //}
 
         public bool Add(int id, Guid guid)
         {

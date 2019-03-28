@@ -36,24 +36,14 @@ namespace WebShop.Repositories
             }
         }
 
-        internal void Add(PlaceOrder order)
+
+        public void Add(PlaceOrder placeorder)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(this.connectionString))
+            {
+                var orderItem = connection.Execute("INSERT INTO PlaceOrder (Name, LastName, Address, Zipcode, City) VALUES(@name, $lastname, @address, $zipcode, @city)", placeorder);
+
+            }
         }
-
-
-        internal void Add()
-        {
-            throw new NotImplementedException();
-        }
-
-        //public void Add(PlaceOrder order)
-        //{
-        //    using (var connection = new SqlConnection(this.connectionString))
-        //    {
-        //        var orderItem = connection.Execute("INSERT INTO PlaceOrder (CostumerName, CostumerLastName, CostumerAddress, CostumerZipcode, CostumerCity) VALUES(@title, @content, @quantity, @price)", order);
-
-        //    }
-        //}
     }
 }

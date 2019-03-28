@@ -25,12 +25,12 @@ namespace WebShop.Controllers
             var connectionString = configuration.GetConnectionString("ConnectionString");
             this.cartService = new CartService(new CartRepository(connectionString));
         }
-        [HttpGet]
+        [HttpGet("{guid}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult Get()
+        public IActionResult Get(Guid guid)
         {
-            var items = cartService.Get();
+            var items = cartService.Get(guid);
             if (items != null)
             {
                 return Ok(items);

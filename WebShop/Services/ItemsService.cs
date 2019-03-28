@@ -43,5 +43,10 @@ namespace WebShop.Services
         {
             throw new NotImplementedException();
         }
+
+        internal object Add(PlaceOrder placeorder)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

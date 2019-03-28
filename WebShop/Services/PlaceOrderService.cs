@@ -9,25 +9,25 @@ namespace WebShop.Services
 {
     public class PlaceOrderService
     {
-        private readonly PlaceOrderRepository placeorderRepository;
+        private readonly PlaceOrderRepository PlaceOrderRepository;
         
         public PlaceOrderService(PlaceOrderRepository placeorderRepository)
         {
-            this.placeorderRepository = placeorderRepository;
+            this.PlaceOrderRepository = placeorderRepository;
         }
 
 
         public List<PlaceOrder> Get()
         {
             {
-                return this.placeorderRepository.Get();
+                return this.PlaceOrderRepository.Get();
             }
         }
 
 
         public PlaceOrder Get(int id)
         {
-            return this.placeorderRepository.Get(id);
+            return this.PlaceOrderRepository.Get(id);
         }
 
         public bool Add(PlaceOrder placeorder)
@@ -35,7 +35,7 @@ namespace WebShop.Services
 
             if (placeorder != null)
             {
-                placeorderRepository.Add(placeorder);
+                PlaceOrderRepository.Add(placeorder);
                 return true;
             }
             return false;
