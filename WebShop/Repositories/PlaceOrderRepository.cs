@@ -27,21 +27,22 @@ namespace WebShop.Repositories
 
         }
 
-        public PlaceOrder Get(int id)
+      
+        public PlaceOrder Get(Guid guid)
         {
             using (var connection = new SqlConnection(this.connectionString))
             {
-                var orderItems = connection.QuerySingleOrDefault<PlaceOrder>("SELECT * FROM orderItems WHERE Id = @id", new { id });
-                return orderItems;
+                return connection.QuerySingleOrDefault<PlaceOrder>("SELECT * FROM PlaceOrder WHERE Id = @guid", new { guid });
             }
+
         }
 
 
-        public void Add(PlaceOrder placeorder)
+        public void Add(PlaceOrder placeOrder)
         {
             using (var connection = new SqlConnection(this.connectionString))
             {
-                var orderItem = connection.Execute("INSERT INTO PlaceOrder (Name, LastName, Address, Zipcode, City) VALUES(@name, $lastname, @address, $zipcode, @city)", placeorder);
+                connection.Execute("INSERT INTO PlaceOrder (Name, LastName, Address, Zipcode, City, CartGuid) VALUES(@name, @lastname, @address, @zipcode, @city, @cartguid)", placeOrder);
 
             }
         }

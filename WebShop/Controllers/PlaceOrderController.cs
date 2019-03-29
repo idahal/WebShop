@@ -43,39 +43,49 @@ namespace WebShop.Controllers
         }
 
 
-        [HttpGet("{id}")]
+        [HttpGet("{guid}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult Get(int id)
+        public IActionResult Get(Guid guid)
         {
-            var placeorder = placeorderService.Get(id);
-            if (placeorder != null)
-            {
+            var result = this.placeorderService.Get(guid);
+                          return Ok(result);
+        }
 
-                return Ok(placeorder);
-            }
-            else
-            {
-                return NotFound();
-            }
-
-    }
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult Post([FromBody]PlaceOrder placeorder)
+
+        public IActionResult Post([FromBody]PlaceOrder placeOrder)
         {
-            var result = this.placeorderService.Add(placeorder);
+            var result = this.placeorderService.Add(placeOrder);
 
             if (!result)
             {
                 return BadRequest();
             }
-
             return Ok();
         }
-
     }
+
+       
+        //[HttpPost]
+        //[ProducesResponseType(StatusCodes.Status200OK)]
+        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
+
+        //public IActionResult Post([FromQuery]string name, string lastname, string address, int zipcode, string city, string cartguid)
+        //{
+        //    var result = this.placeorderService.Add(name, lastname, address, zipcode, city, cartguid);
+
+        //    if (!result)
+        //    {
+        //        return BadRequest();
+        //    }
+        //    return Ok();
+        //}
+
+
+    
 }
 

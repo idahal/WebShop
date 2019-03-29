@@ -7,7 +7,7 @@ namespace WebShop.Models
 {
     public class PlaceOrder
     {
-        public string OrderId { get; set; }
+        public int OrderId { get; set; }
 
         public string Name { get; set; }
 
@@ -18,6 +18,8 @@ namespace WebShop.Models
         public string Zipcode { get; set; }
 
         public string City { get; set; }
+
+        public string CartGuid { get; set; }
 
     }
 }

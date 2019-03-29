@@ -26,11 +26,6 @@ namespace WebShop.Services
 
 
 
-        //public Cart Get(Guid guid)
-        //{
-        //    return this.cartRepository.Get(guid);
-        //}
-
         public bool Add(int id, Guid guid)
         {
 

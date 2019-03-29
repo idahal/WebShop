@@ -24,26 +24,20 @@ namespace WebShop.Services
             }
         }
 
-
-        public PlaceOrder Get(int id)
+        public PlaceOrder Get(Guid guid)
         {
-            return this.PlaceOrderRepository.Get(id);
+            return this.PlaceOrderRepository.Get(guid);
         }
 
-        public bool Add(PlaceOrder placeorder)
+        public bool Add(PlaceOrder placeOrder)
         {
-
-            if (placeorder != null)
+            if (placeOrder != null)
             {
-                PlaceOrderRepository.Add(placeorder);
+                PlaceOrderRepository.Add(placeOrder);
                 return true;
             }
             return false;
         }
-
-        internal object Get(object id)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

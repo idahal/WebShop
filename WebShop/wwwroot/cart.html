@@ -10,18 +10,18 @@
 </head>
 <body>
     <a class="back_link" href="/index.html">Back</a>
-    <a class="cart_link" href="/">Continue</a>
     <div id="cart">
 
     </div>
-       <form action="#">
-            First name: <input type="text" name="FirstName" value="Name"><br>
-            Last name: <input type="text" name="LastName" value="Lastname"><br>
-            Address: <input type="text" name="FirstName" value="Address"><br>
-            Zipcode: <input type="text" name="LastName" value="Zipcode"><br>
-            City: <input type="text" name="FirstName" value="City"><br>
-            <button onClick="addToCart()" id="buyButton">Sumbit and continue</button>
-        </form>
+    <form action="#">
+        First name: <input id="Name" type="text" name="Name" value=""><br>
+        Last name: <input id="LastName" type="text" name="LastName" value=""><br>
+        Address: <input id="Address" type="text" name="Address" value=""><br>
+        Zipcode: <input id="Zipcode" type="text" name="Zipcode" value=""><br>
+        City: <input id="City" type="text" name="City" value=""><br>
+        <input id="CartGuid" type="hidden" name="CartGuid" value="49780816 - 7984 - 493E-A152-111776C4DCCE" />
+        <button onClick="addCustumerInfo()" id="buyButton">Sumbit and continue</button>
+    </form>
         <script src="cart.js" charset="utf-8"></script>
     </body>
 </html>
