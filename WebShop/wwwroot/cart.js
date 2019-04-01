@@ -1,7 +1,33 @@
 ﻿const cartList = document.getElementById('cart');
+const cartGuid = localStorage.getItem("guid");
+document.getElementById('CartGuid').value = cartGuid;
+const form = document.forms[0];
+form.addEventListener('submit', event => {
+    event.preventDefault();
+    const formData = new FormData(form);
+    let data = {};
+
+    for (let entry of formData.entries()) {
+        data[entry[0]] = entry[1];
+    }
+    data = JSON.stringify(data)
+    console.log(data);
+
+    fetch('https://localhost:44386/api/placeorder', {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body: data
+    })
+        .then(location = '/checkout.html')
+})
 //skapa variabel av local storage
 
-fetch('https://localhost:44386/api/cart/49780816-7984-493E-A152-111776C4DCCE')
+
+
+fetch('https://localhost:44386/api/cart/'+ cartGuid)
     .then(response => response.json())
     .then(data => {
           data.forEach(item => {
@@ -16,32 +42,3 @@ fetch('https://localhost:44386/api/cart/49780816-7984-493E-A152-111776C4DCCE')
     })
     .catch(error => console.error(error))
 
-//user info
-var user = {
-    name: 'name',
-    lastname: 'lastname',
-    address: 'gatan',
-    zipcode: 'number',
-    city: 'city',
-    cartguid: '49780816 - 7984 - 493E-A152-111776C4DCCE'
-};
-
-
-var data = new FormData();
-data.append("json", JSON.stringify(user));
-
-
-const addCustumerInfo = () => {
-   
-    fetch(`https://localhost:44386/api/placeorder`, {
-
-        method: "POST",
-        body: data
-    })
-        .then(response => response.json())
-        .then(data => {
-            if (data) {
-                return data;
-            }
-        });
-};

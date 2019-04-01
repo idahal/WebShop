@@ -17,22 +17,12 @@ namespace WebShop.Repositories
             this.connectionString = connectionString;
         }
 
-        public List<PlaceOrder> Get()
-        {
-            using (var connection = new SqlConnection(this.connectionString))
-            {
-                var orderItems = connection.Query<PlaceOrder>("SELECT * FROM PlaceOrder").ToList();
-                return orderItems;
-            }
-
-        }
-
-      
+           
         public PlaceOrder Get(Guid guid)
         {
             using (var connection = new SqlConnection(this.connectionString))
             {
-                return connection.QuerySingleOrDefault<PlaceOrder>("SELECT * FROM PlaceOrder WHERE Id = @guid", new { guid });
+                return connection.QuerySingleOrDefault<PlaceOrder>($"SELECT * FROM PlaceOrder WHERE cartguid = '{guid}'");
             }
 
         }
@@ -42,8 +32,7 @@ namespace WebShop.Repositories
         {
             using (var connection = new SqlConnection(this.connectionString))
             {
-                connection.Execute("INSERT INTO PlaceOrder (Name, LastName, Address, Zipcode, City, CartGuid) VALUES(@name, @lastname, @address, @zipcode, @city, @cartguid)", placeOrder);
-
+                connection.Execute($"INSERT INTO PlaceOrder (Name, LastName, Address, Zipcode, City, CartGuid) VALUES('{placeOrder.Name}', '{placeOrder.Lastname}', '{placeOrder.Address}', {placeOrder.Zipcode}, '{placeOrder.City}', '{placeOrder.RealGuid.Value}')");
             }
         }
     }

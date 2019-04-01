@@ -17,13 +17,7 @@ namespace WebShop.Services
         }
 
 
-        public List<PlaceOrder> Get()
-        {
-            {
-                return this.PlaceOrderRepository.Get();
-            }
-        }
-
+       
         public PlaceOrder Get(Guid guid)
         {
             return this.PlaceOrderRepository.Get(guid);

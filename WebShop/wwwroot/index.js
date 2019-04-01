@@ -9,8 +9,8 @@ const productsList = document.getElementById('products');
         <strong><h1>${item.title}</h1></strong>
           <img src="./Image/${item.image}" alt="${item.title}" >
           <h3>${item.content}</h3>
-          <p>${item.price} : -</p>
-          <p>Left: ${item.quantity}</p>
+          <strong><p>Price:</strong> ${item.price} : -</p>
+          <strong><p>Left:</strong> ${item.quantity}</p>
           <button onClick="addToCart(${item.id})" id="buyButton">Buy</button>
           `
           productsList.innerHTML += output;

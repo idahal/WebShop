@@ -17,14 +17,15 @@
         <h2>Your Cart</h2>
 
     </div>
-    <form action="#">
+    <form>
+        <h2>Fill out the form to proceed:</h2>
         First name: <input id="Name" type="text" name="Name" value=""><br>
         Last name: <input id="LastName" type="text" name="LastName" value=""><br>
         Address: <input id="Address" type="text" name="Address" value=""><br>
         Zipcode: <input id="Zipcode" type="text" name="Zipcode" value=""><br>
         City: <input id="City" type="text" name="City" value=""><br>
-        <input id="CartGuid" type="hidden" name="CartGuid" value="49780816 - 7984 - 493E-A152-111776C4DCCE" />
-        <button onClick="addCustumerInfo()" id="buyButton"><a href="checkout.html">Sumbit and continue</a></button>
+        <input id="CartGuid" type="hidden" name="CartGuid"/>
+        <button type="submit" id="buyButton">Continue</button>
         
     </form>
      <script src="cart.js" charset="utf-8"></script>
