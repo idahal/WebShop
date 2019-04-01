@@ -15,15 +15,20 @@ fetch('https://localhost:44386/api/cart/' + cartGuid)
     })
     .catch(error => console.error(error))
 
+const costumerList = document.getElementById('costumer');
 fetch('https://localhost:44386/api/placeorder/' + cartGuid)
     .then(response => response.json())
     .then(data => {
         data.forEach(item => {
             let output = `
-             <p>${item.name}:-</p>
+             <p>${item.name}</p>
+             <p>${item.lastname}</p>
+             <p>${item.address}</p>
+             <p>${item.zipcode}</p>
+             <p>${item.City}</p>
          
         `
-            cartList.innerHTML += output;
+            costumerList.innerHTML += output;
         });
     })
     .catch(error => console.error(error))

@@ -22,7 +22,8 @@ namespace WebShop.Repositories
         {
             using (var connection = new SqlConnection(this.connectionString))
             {
-                return connection.QuerySingleOrDefault<PlaceOrder>($"SELECT * FROM PlaceOrder WHERE cartguid = '{guid}'");
+                return connection.QuerySingleOrDefault<PlaceOrder>(@"SELECT * FROM PlaceOrder 
+                                     WHERE CartGuid = @guid", new { guid });
             }
 
         }
