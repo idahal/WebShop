@@ -8,7 +8,7 @@ fetch('https://localhost:44386/api/cart/49780816-7984-493E-A152-111776C4DCCE')
             let output = `
         <strong><p>${item.title}</p></strong>
         <img src="./Image/${item.image}" alt="${item.title}" >
-        <p>${item.price}</p>
+        <p>${item.price}:-</p>
          
         `
             cartList.innerHTML += output;
@@ -34,6 +34,7 @@ data.append("json", JSON.stringify(user));
 const addCustumerInfo = () => {
    
     fetch(`https://localhost:44386/api/placeorder`, {
+
         method: "POST",
         body: data
     })

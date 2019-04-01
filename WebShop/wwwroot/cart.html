@@ -10,7 +10,11 @@
 </head>
 <body>
     <a class="back_link" href="/index.html">Back</a>
+    <div class="header">
+        <h1>The Super Nice Poster Shop</h1>
+    </div>
     <div id="cart">
+        <h2>Your Cart</h2>
 
     </div>
     <form action="#">
@@ -20,8 +24,9 @@
         Zipcode: <input id="Zipcode" type="text" name="Zipcode" value=""><br>
         City: <input id="City" type="text" name="City" value=""><br>
         <input id="CartGuid" type="hidden" name="CartGuid" value="49780816 - 7984 - 493E-A152-111776C4DCCE" />
-        <button onClick="addCustumerInfo()" id="buyButton">Sumbit and continue</button>
+        <button onClick="addCustumerInfo()" id="buyButton"><a href="checkout.html">Sumbit and continue</a></button>
+        
     </form>
-        <script src="cart.js" charset="utf-8"></script>
-    </body>
+     <script src="cart.js" charset="utf-8"></script>
+</body>
 </html>

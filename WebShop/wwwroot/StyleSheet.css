@@ -2,19 +2,27 @@
     background-color: antiquewhite;
     width: 100%;
     font-family: 'Poppins', sans-serif;
+   
 }
 
 .header {
     display: flex;
     justify-content: center;
-    font-size: 1.5em;
+    font-size: 1.7em;
     color: slateblue;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    height: 25vh;
 }
 
-#products {
+#products, #cart {
     display: flex;
     flex-direction: column;
     align-items: center;
+    line-height: 2px; 
+    background-color: white;
+    width: 60%;
+    margin: auto;
+    
 }
 
 img {
@@ -26,6 +34,7 @@ img {
     float: right;
     margin-right: 5%;
     font-size: 1.5em;
+    height: 10vh;
 }
 
 button {
@@ -33,8 +42,13 @@ button {
     width: 144px;
     height: 50px;
     border-radius: 30px;
-    border: 1px solid purple;
+    margin-bottom: 5%;
+    border: none;
 }
+
+    button:hover {
+        background-color: purple;
+    }
 
 form {
     display: flex;
