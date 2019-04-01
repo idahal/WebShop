@@ -19,16 +19,14 @@ const costumerList = document.getElementById('costumer');
 fetch('https://localhost:44386/api/placeorder/' + cartGuid)
     .then(response => response.json())
     .then(data => {
-        data.forEach(item => {
             let output = `
-             <p>${item.name}</p>
-             <p>${item.lastname}</p>
-             <p>${item.address}</p>
-             <p>${item.zipcode}</p>
-             <p>${item.City}</p>
+             <p>${data.name}</p>
+             <p>${data.lastname}</p>
+             <p>${data.address}</p>
+             <p>${data.zipcode}</p>
+             <p>${data.city}</p>
          
         `
             costumerList.innerHTML += output;
-        });
-    })
+        })
     .catch(error => console.error(error))
