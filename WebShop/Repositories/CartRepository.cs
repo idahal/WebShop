@@ -21,7 +21,7 @@ namespace WebShop.Repositories
             using (var connection = new SqlConnection(this.connectionString))
             {
                 var cartItems = connection.Query<Cart>(
-                    @"SELECT title, image, price FROM Cart 
+                    @"SELECT title, image, cart.price FROM Cart 
                         LEFT JOIN Items ON cart.itemid = Items.Id 
                         WHERE CartGuid = @guid", new { guid }).ToList();
 
@@ -31,21 +31,13 @@ namespace WebShop.Repositories
         }
 
 
-        //public Cart Get(Guid guid)
-        //{
-        //    using (var connection = new SqlConnection(this.connectionString))
-        //    {
-        //        var cartItems = connection.QuerySingleOrDefault<Cart>("SELECT * FROM Cart WHERE Guid = @guid", new { guid });
-        //        return cartItems;
-        //    }
-        //}
 
-           public void Add(int id, Guid guid)
+           public void Add(int id, Guid guid, int price)
         {
             using (var connection = new SqlConnection(this.connectionString))
             {
 
-                var shopItem = connection.Execute($"INSERT INTO Cart (ItemId, CartGuid) VALUES({id}, '{guid}')");
+                var shopItem = connection.Execute($"INSERT INTO Cart (ItemId, CartGuid, price) VALUES({id}, '{guid}', {price})");
 
             }
         }

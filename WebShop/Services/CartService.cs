@@ -24,14 +24,13 @@ namespace WebShop.Services
             }
         }
 
-
-
-        public bool Add(int id, Guid guid)
+        
+        public bool Add(int id, Guid guid, int price)
         {
 
             if (id > 0)
             {
-                cartRepository.Add(id, guid);
+                cartRepository.Add(id, guid, price);
                 return true;
             }
             return false;

@@ -11,7 +11,7 @@ const productsList = document.getElementById('products');
           <h3>${item.content}</h3>
           <strong><p>Price:</strong> ${item.price} : -</p>
           <strong><p>Left:</strong> ${item.quantity}</p>
-          <button onClick="addToCart(${item.id})" id="buyButton">Buy</button>
+          <button onClick="addToCart(${item.id}, ${item.price})" id="buyButton">Buy</button>
           `
           productsList.innerHTML += output;
       });
@@ -19,9 +19,9 @@ const productsList = document.getElementById('products');
     .catch(error => console.error(error))
 
 
-const addToCart = (id) => {
+const addToCart = (id, price) => {
     let guid = localStorage.getItem("guid");
-    fetch(`https://localhost:44386/api/cart?id=${id}&guid=${guid}`, {
+    fetch(`https://localhost:44386/api/cart?id=${id}&price=${price}&guid=${guid}`, {
         method: "POST"
     })
         .then(response => response.json())

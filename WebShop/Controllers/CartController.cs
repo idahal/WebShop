@@ -45,11 +45,11 @@ namespace WebShop.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
-        public IActionResult Post([FromQuery]int id, string guid = null)
+        public IActionResult Post([FromQuery]int id, int price, string guid = null)
         {
             var cartGuid = Guid.TryParse(guid, out Guid guidresult) ? guidresult : Guid.NewGuid();
 
-            var result = cartService.Add(id, cartGuid);
+            var result = cartService.Add(id, cartGuid, price);
 
             if (!result)
             {
