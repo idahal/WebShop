@@ -3,8 +3,9 @@ const orderButton = document.getElementById('orderconfirmation');
 
 orderButton.addEventListener('click', () => {
     localStorage.removeItem('guid');
-    alert("Yey, we just send your order!");
-    setTimeout(() => location = "./index.html",300);
+    location = "./confirmpage.html"
+    //alert("Yey, we just send your order!");
+    //setTimeout(() => location = "./index.html",300);
 
 });
 
