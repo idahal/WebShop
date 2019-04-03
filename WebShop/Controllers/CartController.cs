@@ -57,8 +57,6 @@ namespace WebShop.Controllers
             }
             return Ok(cartGuid);
         }
-
-      
     }
 }
 

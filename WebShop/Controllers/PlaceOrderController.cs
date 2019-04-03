@@ -26,14 +26,14 @@ namespace WebShop.Controllers
             var connectionString = configuration.GetConnectionString("ConnectionString");
             this.placeorderService = new PlaceOrderService(new PlaceOrderRepository(connectionString));
         }
-       
+
         [HttpGet("{guid}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Get(Guid guid)
         {
             var result = this.placeorderService.Get(guid);
-                          return Ok(result);
+            return Ok(result);
         }
 
 
@@ -43,7 +43,8 @@ namespace WebShop.Controllers
 
         public IActionResult Post([FromBody]PlaceOrder placeOrder)
         {
-            if (!placeOrder.RealGuid.HasValue) {
+            if (!placeOrder.RealGuid.HasValue)
+            {
                 return BadRequest();
             }
             var result = this.placeorderService.Add(placeOrder);
@@ -56,23 +57,6 @@ namespace WebShop.Controllers
         }
     }
 
-       
-        //[HttpPost]
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
 
-        //public IActionResult Post([FromQuery]string name, string lastname, string address, int zipcode, string city, string cartguid)
-        //{
-        //    var result = this.placeorderService.Add(name, lastname, address, zipcode, city, cartguid);
-
-        //    if (!result)
-        //    {
-        //        return BadRequest();
-        //    }
-        //    return Ok();
-        //}
-
-
-    
 }
 

@@ -30,8 +30,7 @@ namespace WebShop.Repositories
 
         }
 
-
-
+        
            public void Add(int id, Guid guid, int price)
         {
             using (var connection = new SqlConnection(this.connectionString))
