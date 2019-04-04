@@ -6,5 +6,6 @@ This is a simple webshop for posters build in C#.
 This project is licensed under the MIT License.
 
 ## Testers:
+Mikael Ravantii.
 
 
