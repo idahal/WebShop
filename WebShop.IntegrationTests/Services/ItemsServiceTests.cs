@@ -18,27 +18,35 @@ namespace WebShop.IntegrationTests.Services
         }
 
         [Test]
-        public void Get_ReturnsResultsFromDatabase()
+        public void Get_ReturnsResultsFromItemTable()
         {
             // Act
             var results = this.itemsService.Get();
             // Assert
+            var givenId = 26;
+            var givenTitle = "Clouds in the sky";
+            var givenContent = "A super nice poster of clouds in the sky.";
+            var givenQuantity = 5;
+            var givenPrice = 259.0000;
+            var givenImage = "posterFive.jpg";
+
             Assert.That(results.Count, Is.EqualTo(7));
-            Assert.That(results[1].Id, Is.EqualTo(26));
-            Assert.That(results[1].Title, Is.EqualTo("Clouds in the sky"));
-            Assert.That(results[1].Content, Is.EqualTo("A super nice poster of clouds in the sky."));
-            Assert.That(results[1].Quantity, Is.EqualTo(5));
-            Assert.That(results[1].Price, Is.EqualTo(259.0000));
-            Assert.That(results[1].Image, Is.EqualTo("posterFive.jpg"));
+            Assert.That(results[1].Id, Is.EqualTo(givenId));
+            Assert.That(results[1].Title, Is.EqualTo(givenTitle));
+            Assert.That(results[1].Content, Is.EqualTo(givenContent));
+            Assert.That(results[1].Quantity, Is.EqualTo(givenQuantity));
+            Assert.That(results[1].Price, Is.EqualTo(givenPrice));
+            Assert.That(results[1].Image, Is.EqualTo(givenImage));
         }
 
         [Test]
-        public void Get_GivenId_ReturnsResultFromDatabase()
+        public void Get_GivenId_ReturnsResultFromItemTable()
         {
             // Act
-            var results = this.itemsService.Get(26);
+            var givenId = 26;
+            var results = this.itemsService.Get(givenId);
             // Assert
-            Assert.That(results.Id, Is.EqualTo(26));
+            Assert.That(results.Id, Is.EqualTo(givenId));
         }
     }
 }
